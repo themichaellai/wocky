@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'bootstrap-sass', '2.1'
+gem 'devise'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -28,6 +29,7 @@ end
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 # To use ActiveModel has_secure_password

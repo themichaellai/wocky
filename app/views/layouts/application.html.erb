@@ -7,7 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <% if user_signed_in? %>
+      <a class="brand" href="#">
+        wocky
+      </a>
+      <ul class="nav pull-right">
+        <li>
+          <p class="navbar-text">hey, <%= current_user.name %></p>
+        </li>
+        <li>
+          <%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav pull-right">
+        <li>
+          <%= link_to 'Sign in', new_user_session_path %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 <%= yield %>
 
 </body>
