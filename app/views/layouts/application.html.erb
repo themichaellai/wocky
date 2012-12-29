@@ -15,7 +15,8 @@
       </a>
       <ul class="nav pull-right">
         <li>
-          <p class="navbar-text">hey, <%= current_user.name %></p>
+          <p class="navbar-text">hey, 
+            <%= link_to(current_user.name, user_path(current_user)) %></p>
         </li>
         <li>
           <%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %>

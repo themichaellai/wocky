@@ -10,6 +10,12 @@
       <%= @user.name %> <br />
       <% if user_signed_in? and @user.id == current_user.id %>
         <%= @user.email %>
+        <%= form_tag('javascript:void(0)', id: 'searchf') do %>
+          <%= label_tag(:q, 'Track: ') %><%= text_field_tag(:q) %>
+          <%= submit_tag('Search', class: 'btn', id: 'search') %>
+        <% end %>
+        <div id="results">
+        </div>
       <% end %>
     </p>
   </div>
