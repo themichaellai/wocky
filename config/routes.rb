@@ -4,8 +4,12 @@ Wocky::Application.routes.draw do
   get "search/artist"
 
   devise_for :users
-  resources :users
+  resources :users do
+    resources :tracks
+  end
   
+  #post 'tracks/create' 
+
   root to: "StaticPages#home"
 
 end

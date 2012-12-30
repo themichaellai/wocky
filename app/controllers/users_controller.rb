@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_id(params[:id])
+    @track = @user.tracks.build
+    @tracks = @user.tracks.all
     render 'public/404.html' if @user.nil?
   end
 end

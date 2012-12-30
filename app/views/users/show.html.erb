@@ -5,18 +5,28 @@
     </h1>
   </aside>
   <div class="span8">
-    <h2>Info</h2>
     <p>
-      <%= @user.name %> <br />
-      <% if user_signed_in? and @user.id == current_user.id %>
-        <%= @user.email %>
-        <%= form_tag('javascript:void(0)', id: 'searchf') do %>
-          <%= label_tag(:q, 'Track: ') %><%= text_field_tag(:q) %>
-          <%= submit_tag('Search', class: 'btn', id: 'search') %>
-        <% end %>
-        <div id="results">
-        </div>
+      <h2>Tracks (<%= @tracks.count %>)</h2>
+      <%= render partial: 'tracks/track', collection: @tracks %>
+
+      <br />
+
+      <%= form_tag('javascript:void(0)', id: 'searchf') do %>
+        <%= label_tag(:q, 'Track: ') %><%= text_field_tag(:q) %>
+        <%= submit_tag('Search', class: 'btn', id: 'search') %>
       <% end %>
+
+      <% 5.times do %>
+        <%= form_for([@user, @track]) do |f| %>
+          <%# need to render errors? %>
+          <%= f.hidden_field :name, class: 'name_field' %>
+          <%= f.hidden_field :artist, class: 'artist_field' %>
+          <%= f.hidden_field :spotify_uri, class: 'spotify_uri_field' %>
+          <%= f.submit '', class: 'btn track-submit hidden' %>
+        <% end %>
+      <% end %>
+      <div id="results">
+      </div>
     </p>
   </div>
 </div>

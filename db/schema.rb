@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227150425) do
+ActiveRecord::Schema.define(:version => 20121229145325) do
+
+  create_table "tracks", :force => true do |t|
+    t.string   "name"
+    t.string   "artist"
+    t.string   "spotify_uri"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
