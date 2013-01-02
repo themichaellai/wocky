@@ -6,8 +6,7 @@ class TracksController < ApplicationController
     @user = User.find(params[:user_id])
     @track = @user.tracks.build(params[:track])
 
-    success = @track.save
-    if success
+    if @track.save
       flash[:success] = 'Track added'
       redirect_to @user
     else

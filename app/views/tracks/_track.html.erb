@@ -1,1 +1,7 @@
-<%= track.name %> - <%= track.artist %><br />
+<%= track.name %> - <%= track.artist %>
+<%= track.vote_count %>
+<%= form_for([track, @vote]) do |f| %>
+  <%= f.hidden_field :ip, value: request.env['REMOTE_ADDR'] %>
+  <%= f.submit '+', class: 'btn-link' %>
+<% end %>
+<br />

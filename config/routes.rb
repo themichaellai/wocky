@@ -7,6 +7,10 @@ Wocky::Application.routes.draw do
   resources :users do
     resources :tracks
   end
+
+  resources :tracks do
+    resources :votes
+  end
   
   #post 'tracks/create' 
 
