@@ -1,11 +1,9 @@
 Wocky::Application.routes.draw do
-  get "search/track"
-
-  get "search/artist"
 
   devise_for :users
   resources :users do
     resources :tracks
+    match 'playlist' => 'users#playlist'
   end
 
   resources :tracks do
