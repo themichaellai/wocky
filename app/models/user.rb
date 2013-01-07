@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 end

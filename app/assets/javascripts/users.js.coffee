@@ -6,6 +6,7 @@ prettyArtists = (artist_array) ->
 $(document).ready(() ->
   $('#searchf').submit(() ->
     url = 'http://ws.spotify.com/search/1/track.json?q=' + $('#q').val()
+    $('#progress').html('Loading...')
     $.ajax({
       url: url,
       dataType: 'json',
@@ -29,10 +30,12 @@ $(document).ready(() ->
         # Show / hide buttons that are active / inactive
         $('.track-submit').slice(0, display_num).removeClass('hidden')
         $('.track-submit').slice(display_num, 5).addClass('hidden')
+        $('#progress').html('')
 
         return
       error: (json) ->
-        $('#results').replaceWith('Error!')
+        $('#progress').html('Error!')
+        $('#results').html('')
         return
       }
     )

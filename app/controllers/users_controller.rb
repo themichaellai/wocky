@@ -15,6 +15,6 @@ class UsersController < ApplicationController
     user = User.find_by_id(params[:user_id])
     min_count = if params[:min_count].nil? then 3 else params[:min_count] end
     tracks = user.tracks.all(:conditions => ["vote_count >= ?", min_count])
-    render :json => tracks.map{ |track| track.as_json(:only => [:artist, :name, :spotify_uri]) }
+    render :json => tracks.map{ |track| track.as_json(:only => [:id, :user_id, :artist, :name, :spotify_uri]) }
   end
 end

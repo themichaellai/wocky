@@ -8,6 +8,7 @@ Wocky::Application.routes.draw do
 
   resources :tracks do
     resources :votes
+    match 'played' => 'tracks#played'
   end
   
   #post 'tracks/create' 

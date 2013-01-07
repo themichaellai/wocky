@@ -15,6 +15,7 @@
         <%= label_tag(:q, 'Track: ') %><%= text_field_tag(:q) %>
         <%= submit_tag('Search', class: 'btn', id: 'search') %>
       <% end %>
+      <div id="progress"></div>
 
       <% 5.times do %>
         <%= form_for([@user, @track]) do |f| %>
